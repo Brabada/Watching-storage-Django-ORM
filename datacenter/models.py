@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Passcard(models.Model):
@@ -18,6 +19,11 @@ class Visit(models.Model):
     passcard = models.ForeignKey(Passcard, on_delete=models.CASCADE)
     entered_at = models.DateTimeField()
     leaved_at = models.DateTimeField(null=True)
+
+    def get_duration(self):
+        current_time = timezone.localtime()
+        return round((current_time - self.entered_at).seconds)
+
 
     def __str__(self):
         return '{user} entered at {entered} {leaved}'.format(
