@@ -9,7 +9,7 @@ def storage_information_view(request):
     non_closed_visits = [
         {
             'who_entered': 'Richard Shaw',
-            'entered_at': '11-04-2018 25:34',
+            'entered_at': '11-04-2022 25:34',
             'duration': '25:03',
         }
     ]
