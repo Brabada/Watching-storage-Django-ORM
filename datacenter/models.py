@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from datetime import timedelta
 
 
 class Passcard(models.Model):
@@ -20,10 +21,21 @@ class Visit(models.Model):
     entered_at = models.DateTimeField()
     leaved_at = models.DateTimeField(null=True)
 
-    def get_duration(self):
+    def _get_duration_by_now(self):
         current_time = timezone.localtime()
         return round((current_time - self.entered_at).seconds)
 
+    def get_duration(self):
+        if not self.leaved_at:
+            return self._get_duration_by_now()
+        else:
+            return self.leaved_at - self.entered_at
+
+    def is_long(self, minutes=60):
+        if not self.leaved_at:
+            return self._get_duration_by_now() > timedelta(minutes=minutes)
+        delta = self.leaved_at - self.entered_at
+        return delta > timedelta(minutes=minutes)
 
     def __str__(self):
         return '{user} entered at {entered} {leaved}'.format(

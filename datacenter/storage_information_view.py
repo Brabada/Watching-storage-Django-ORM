@@ -1,8 +1,8 @@
-from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
 
 from datetime import timedelta
+
 
 def format_duration(duration):
     time = timedelta(seconds=duration)
@@ -10,8 +10,6 @@ def format_duration(duration):
 
 
 def storage_information_view(request):
-    # Программируем здесь
-
     visits = Visit.objects.filter(leaved_at=None)
 
     non_closed_visits = []
@@ -25,16 +23,6 @@ def storage_information_view(request):
             }
         )
 
-    # non_closed_visits = [
-    #     {
-    #         'who_entered': 'Richard Shaw',
-    #         'entered_at': '11-04-2022 25:34',
-    #         'duration': f'{format_duration(7599)}',
-    #     },
-    #     {'who_entered': 'Richard Shaw',
-    #         'entered_at': '11-04-2022 25:34',
-    #         'duration': f'{format_duration(7599)}',}
-    # ]
     context = {
         'non_closed_visits': non_closed_visits,  # не закрытые посещения
     }
