@@ -23,18 +23,16 @@ class Visit(models.Model):
 
     def _get_duration_by_now(self):
         current_time = timezone.localtime()
-        return round((current_time - self.entered_at).seconds)
+        return round((current_time - self.entered_at).total_seconds())
 
     def get_duration(self):
         if not self.leaved_at:
-            return self._get_duration_by_now()
+            return timedelta(seconds=self._get_duration_by_now())
         else:
             return self.leaved_at - self.entered_at
 
     def is_long(self, minutes=60):
-        if not self.leaved_at:
-            return self._get_duration_by_now() > timedelta(minutes=minutes)
-        delta = self.leaved_at - self.entered_at
+        delta = self.get_duration()
         return delta > timedelta(minutes=minutes)
 
     def __str__(self):

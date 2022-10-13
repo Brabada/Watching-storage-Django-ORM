@@ -4,22 +4,16 @@ from django.shortcuts import render
 from datetime import timedelta
 
 
-def format_duration(duration):
-    time = timedelta(seconds=duration)
-    return time
-
-
 def storage_information_view(request):
     visits = Visit.objects.filter(leaved_at=None)
 
     non_closed_visits = []
     for visit in visits:
-        duration = visit.get_duration()
         non_closed_visits.append(
             {
                 'who_entered': visit.passcard.owner_name,
                 'entered_at': visit.entered_at,
-                'duration': format_duration(duration),
+                'duration': visit.get_duration(),
             }
         )
 
