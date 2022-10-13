@@ -1,7 +1,7 @@
 from datacenter.models import Visit
+from datacenter.models import format_duration
 from django.shortcuts import render
 
-from datetime import timedelta
 
 
 def storage_information_view(request):
@@ -9,11 +9,12 @@ def storage_information_view(request):
 
     non_closed_visits = []
     for visit in visits:
+        duration = visit.get_duration()
         non_closed_visits.append(
             {
                 'who_entered': visit.passcard.owner_name,
                 'entered_at': visit.entered_at,
-                'duration': visit.get_duration(),
+                'duration': format_duration(duration),
             }
         )
 

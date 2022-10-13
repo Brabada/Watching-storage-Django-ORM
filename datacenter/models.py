@@ -3,6 +3,12 @@ from django.utils import timezone
 from datetime import timedelta
 
 
+def format_duration(duration):
+    """Takes timedelta and format it to str"""
+
+    return str(duration)
+
+
 class Passcard(models.Model):
     is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now=True)
