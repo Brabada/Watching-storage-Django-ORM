@@ -5,8 +5,10 @@ from datetime import timedelta
 
 def format_duration(duration):
     """Takes timedelta and format it to str"""
-
-    return str(duration)
+    total_seconds = int(duration.total_seconds())
+    hours = total_seconds // 3600
+    minutes = (total_seconds % 3600) // 60
+    return f'{hours}ч {minutes}мин'
 
 
 class Passcard(models.Model):
