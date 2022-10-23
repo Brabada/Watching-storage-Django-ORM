@@ -1,6 +1,6 @@
 # Simulation of vault's access system
 
-Django-based learning project that shows list of employees with access to vault, their access cards, employees that's currently in vault and level of suspicious.   for TOP-15 programming languages from [hh.ru](https://hh.ru/) and [superjob.ru](https://www.superjob.ru/) in console.
+Django-based learning project that shows list of employees with access to vault, their access cards, employees that's currently in vault and level of suspicious.
 
 Project working on localhost http://127.0.0.1:8000/ by default. List of employees fetching from external DB: checkpoint.devman.org
 
