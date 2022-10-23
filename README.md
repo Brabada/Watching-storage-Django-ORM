@@ -20,7 +20,18 @@ $ pip install -r "requirements.txt"
 ```
 
 ## How to launch
+Add to `.env` next parameters:
+```text
+export DB_HOST=
+export DB_PORT=
+export DB_NAME=
+export DB_USERNAME=
+export DB_PASSWORD=
+export DB_SECRET_KEY=
+export DEBUG=False
+```
 
+Then launch server:
 ```shell
 $ cd "path_where_is_script"
 $ python manage.py runserver
