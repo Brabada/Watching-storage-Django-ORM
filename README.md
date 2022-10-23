@@ -23,7 +23,7 @@ $ pip install -r "requirements.txt"
 
 ```shell
 $ cd "path_where_is_script"
-$ python main.py
+$ python manage.py runserver
 ```
 
 Then open http://127.0.0.1:8000/ in browser.
