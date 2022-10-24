@@ -9,8 +9,8 @@ port = env.int('DB_PORT')
 name = env('DB_NAME')
 user = env('DB_USERNAME')
 password = env('DB_PASSWORD')
-secret_key = env('DB_SECRET_KEY')
-debug = env.bool('DEBUG')
+secret_key = env('SECRET_KEY', 'SECRET_KEY')
+debug = env.bool('DEBUG', False)
 
 DATABASES = {
     'default': {
