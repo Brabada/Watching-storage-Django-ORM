@@ -31,7 +31,8 @@ DEBUG = debug
 
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = ['*']
+allowed_hosts = env.list('ALLOWED_HOSTS', [])
+ALLOWED_HOSTS = [allowed_hosts]
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
