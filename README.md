@@ -20,7 +20,7 @@ $ pip install -r "requirements.txt"
 ```
 
 ## How to launch
-Add to `.env` next parameters:
+Create `.env` in root of repo and add to `.env` next parameters:
 ```text
 export DB_HOST=
 export DB_PORT=
