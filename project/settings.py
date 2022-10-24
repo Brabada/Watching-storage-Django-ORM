@@ -31,7 +31,7 @@ DEBUG = debug
 
 ROOT_URLCONF = 'project.urls'
 
-allowed_hosts = env.list('ALLOWED_HOSTS', [])
+allowed_hosts = env.list('ALLOWED_HOSTS', ['localhost', '127.0.0.1'])
 ALLOWED_HOSTS = [allowed_hosts]
 
 
